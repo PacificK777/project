@@ -6,6 +6,7 @@ import com.productservice.productservice09april.repositories.CategoryRepository;
 import com.productservice.productservice09april.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @Service("selfProductService")
 public class SelfProductService implements ProductService{
@@ -37,9 +38,10 @@ public class SelfProductService implements ProductService{
         if(categoryFromDatabase == null){
             Category category1 = new Category();
             category1.setCategoryTitle(category);
+            category1.setCreatedAt(new Date());
             categoryFromDatabase = category1;
         }
-
+        p.setCreatedAt(new Date());
         p.setCategory(categoryFromDatabase);
 
         Product savedProduct = productRepository.save(p);
