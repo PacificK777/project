@@ -24,6 +24,5 @@ public class Product extends BaseModel{
 //@ManyToOne
 //    private Rating rating;
 @ManyToOne(cascade = {CascadeType.PERSIST}) //m:1
-@JsonIgnore
     private Category category;
 }

@@ -30,7 +30,7 @@ public class SelfProductService implements ProductService{
         p.setPrice(price);
         p.setImage(image);
         /*
-        I need to confirm if already the category exists
+        It need to confirm if already the category exists
          */
         Category categoryFromDatabase = categoryRepository.findByCategoryTitle(category);
 
@@ -40,7 +40,7 @@ public class SelfProductService implements ProductService{
             categoryFromDatabase = category1;
         }
 
-        p.setCategory(categoryFromDatabase); //persist as cascade type
+        p.setCategory(categoryFromDatabase);
 
         Product savedProduct = productRepository.save(p);
         return savedProduct;
