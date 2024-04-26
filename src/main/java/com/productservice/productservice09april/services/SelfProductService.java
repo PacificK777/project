@@ -66,12 +66,12 @@ public class SelfProductService implements ProductService{
 
     @Override
     public List<Product> getProductsByCategory(String category) {
-        return List.of();
+        return productRepository.findAllByCategory(categoryRepository.findByCategoryTitle(category));
     }
 
     @Override
     public List<String> getAllCategories() {
-        return List.of();
+        return null;
     }
     @Override
     public Product getSingleProduct(Long productId) {

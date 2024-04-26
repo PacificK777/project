@@ -1,5 +1,6 @@
 package com.productservice.productservice09april.repositories;
 
+import com.productservice.productservice09april.models.Category;
 import com.productservice.productservice09april.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,4 +13,8 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
     List<Product> findAll();
+
+    List<Product> findAllByCategory(Category category);
+
+
 }
