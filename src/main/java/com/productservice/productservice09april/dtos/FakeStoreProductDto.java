@@ -2,6 +2,7 @@ package com.productservice.productservice09april.dtos;
 
 import com.productservice.productservice09april.models.Category;
 import com.productservice.productservice09april.models.Product;
+import com.productservice.productservice09april.models.Rating;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +17,7 @@ public class FakeStoreProductDto {
     private String category;
     private double rate;
     private int count;
-//    private Rating rating;
+    private Rating rating;
 
     public Product toProduct(){
         Product product = new Product();
@@ -26,11 +27,11 @@ public class FakeStoreProductDto {
         product.setDescription(description);
         product.setImage(image);
 
-//        Rating rate = new Rating();
-//        rate.setRate(getRate());
-//        rate.setCount(getCount());
-//
-//        product.setRating(rating);
+        Rating rate = new Rating();
+        rate.setRate(this.rate);
+        rate.setCount(this.count);
+
+        product.setRating(rating);
 
         Category category1 = new Category();
         category1.setCategoryTitle(category);

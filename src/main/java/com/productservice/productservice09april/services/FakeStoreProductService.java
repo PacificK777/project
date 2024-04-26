@@ -1,7 +1,7 @@
 package com.productservice.productservice09april.services;
 
 import com.productservice.productservice09april.dtos.FakeStoreProductDto;
-//import com.productservice.productservice09april.models.Rating;
+import com.productservice.productservice09april.models.Rating;
 import com.productservice.productservice09april.models.Product;
 import jdk.jfr.Category;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("FakeStoreProductService")
+@Service("FakeStore")
 public class FakeStoreProductService implements ProductService{
 
     private RestTemplate restTemplate;

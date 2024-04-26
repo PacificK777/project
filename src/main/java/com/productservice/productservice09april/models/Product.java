@@ -1,10 +1,9 @@
 package com.productservice.productservice09april.models;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +20,9 @@ public class Product extends BaseModel{
     private String description;
     private String image;
 
-//@ManyToOne
-//    private Rating rating;
-@ManyToOne(cascade = {CascadeType.PERSIST}) //m:1
+    @OneToOne(cascade = CascadeType.ALL)
+    private Rating rating;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST}) //m:1
     private Category category;
 }

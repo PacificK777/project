@@ -1,6 +1,7 @@
 package com.productservice.productservice09april.dtos;
 
 import com.productservice.productservice09april.models.Category;
+import com.productservice.productservice09april.models.Rating;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.transaction.CannotCreateTransactionException;
@@ -14,4 +15,5 @@ public class RequestBodyProductDTO {
     private String description;
     private String image;
     private String category;
+    private Rating rating;
 }
