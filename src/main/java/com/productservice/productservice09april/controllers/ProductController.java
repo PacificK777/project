@@ -1,6 +1,9 @@
 package com.productservice.productservice09april.controllers;
 
+import com.productservice.productservice09april.Commons.AuthenticationCommons;
+import com.productservice.productservice09april.Exception.InvalidTokenException;
 import com.productservice.productservice09april.dtos.RequestBodyProductDTO;
+import com.productservice.productservice09april.dtos.UserDTO;
 import com.productservice.productservice09april.models.Product;
 import com.productservice.productservice09april.services.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,9 +13,12 @@ import java.util.List;
 @RestController
 public class ProductController {
     ProductService productService;
+    private AuthenticationCommons authenticationCommons;
 
-    public ProductController(@Qualifier("selfProductService") ProductService productService) {
+    public ProductController(@Qualifier("selfProductService") ProductService productService,
+                             AuthenticationCommons authenticationCommons) {
         this.productService = productService;
+        this.authenticationCommons = authenticationCommons;
     }
     /*
     Qualifier is used to identify the dependency to be injected here
@@ -30,9 +36,15 @@ public class ProductController {
     }
 
     // TO GET SPECIFIC PRODUCT DETAILS
-    @GetMapping("/products/{id}")
-    public Product getProductDetails(@PathVariable("id") Long id){
+    @GetMapping("/products/{id}/{token}")
+    public Product getProductDetails(@PathVariable("id") Long id,@PathVariable("token") String token) throws InvalidTokenException {
 
+        UserDTO userDTO = authenticationCommons.validateToken(token);
+        if(userDTO == null){
+            //token is invalid
+            throw new InvalidTokenException("Invalid token. Please login to get the product details.");
+        }
+        //token is valid, make a call to product service to fetch the product
         return productService.getSingleProduct(id);
     }
 

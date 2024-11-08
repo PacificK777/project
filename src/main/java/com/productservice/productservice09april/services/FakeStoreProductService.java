@@ -33,6 +33,8 @@ public class FakeStoreProductService implements ProductService{
         return fakeStoreProductResponse.getBody().toProduct();
     }
 
+
+
     @Override
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
@@ -44,6 +46,7 @@ public class FakeStoreProductService implements ProductService{
        }
        return products;
     }
+
 
     @Override
     public Product createProduct(String title,
@@ -70,7 +73,6 @@ public class FakeStoreProductService implements ProductService{
         Product productToDelete = getSingleProduct(productId);
         restTemplate.delete("https://fakestoreapi.com/products/" + productId);
         return productToDelete;
-
 
     }
 
